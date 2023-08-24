@@ -15,7 +15,7 @@ class UsersResource(Resource):
         user_list = [{"id": user.id, "username": user.username, "email": user.email} for user in users]
         return jsonify(user_list)
 
-@users_ns.doc(description="Create a new user")
+    @users_ns.doc(description="Create a new user")
     @users_ns.expect(user_model)  
     def post(self):
         data = request.get_json()
@@ -83,7 +83,7 @@ class PostsResource(Resource):
         return jsonify(post_list)
 
 
-@posts_ns.doc(description="Create a new post")
+    @posts_ns.doc(description="Create a new post")
     @posts_ns.expect(post_model)  
     def post(self):
         data = request.get_json()
@@ -106,7 +106,7 @@ class PostResource(Resource):
         return jsonify({"id": post.id, "title": post.title, "content": post.content}) 
 
 
-@posts_ns.doc(description="Update a post by ID")
+    @posts_ns.doc(description="Update a post by ID")
     @posts_ns.param('post_id')
     @posts_ns.expect(post_model)  
     def put(self, post_id):
@@ -125,7 +125,7 @@ class PostResource(Resource):
 
 
 
-@posts_ns.doc(description="Delete a post by ID")
+    @posts_ns.doc(description="Delete a post by ID")
     @posts_ns.param('post_id')
     def delete(self, post_id):
         post = Post.query.get(post_id)
@@ -150,7 +150,7 @@ class CommentsResource(Resource):
         comment_list = [{"id": comment.id, "text": comment.text} for comment in comments]
         return jsonify(comment_list)
 
-@comments_ns.doc(description="Create a new comment")
+    @comments_ns.doc(description="Create a new comment")
     @comments_ns.expect(comment_model)  
     def post(self):
          data = request.get_json()
@@ -192,7 +192,7 @@ class CommentResource(Resource):
 
 
 
- @comments_ns.doc(description="Delete a comment by ID")
+    @comments_ns.doc(description="Delete a comment by ID")
     @comments_ns.param('comment_id')
     def delete(self, comment_id):
         comment = Comment.query.get(comment_id)
